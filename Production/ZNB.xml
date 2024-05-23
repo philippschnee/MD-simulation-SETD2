@@ -1,0 +1,39 @@
+<ForceField>
+  <Info>
+    <DateGenerated>2020-03-17</DateGenerated>
+  </Info>
+  <AtomTypes>
+    <Type class="ZN" element="ZN" mass="53.380" name="ZN"/>
+    <Type class="D" element="Dy" mass="3" name="Dy"/>
+  </AtomTypes>
+  <Residues>
+    <Residue name="ZNB">
+      <Atom name="ZN" type="ZN" charge="0.0"/>
+      <Atom name="D1" type="Dy" charge="0.5"/>
+      <Atom name="D2" type="Dy" charge="0.5"/>
+      <Atom name="D3" type="Dy" charge="0.5"/>
+      <Atom name="D4" type="Dy" charge="0.5"/>
+      <Bond atomName1="ZN" atomName2="D1"/>
+      <Bond atomName1="ZN" atomName2="D2"/>
+      <Bond atomName1="ZN" atomName2="D3"/>
+      <Bond atomName1="ZN" atomName2="D4"/>
+    </Residue>
+  </Residues>
+  <HarmonicBondForce>
+    <Bond type1="Dy" type2="ZN" length="0.09000000000000001" k="535551.9999999999"/>
+  </HarmonicBondForce>
+  <HarmonicAngleForce>
+    <Angle type1="Dy" type2="ZN" type3="Dy" angle="1.911135530933791" k="460.24"/>
+    <Angle type1="Dy" type2="Dy" type3="ZN" angle="0.6152285613280012" k="460.24"/>
+  </HarmonicAngleForce>
+  <PeriodicTorsionForce>
+    <Improper type1="ZN" type2="Dy" type3="Dy" type4="Dy" periodicity1="2" phase1="0.616101225954" k1="0"/>
+    <Improper type1="Dy" type2="ZN" type3="Dy" type4="Dy" periodicity1="2" phase1="2.0943951023932" k1="0"/>
+    <Improper type1="Dy" type2="Dy" type3="Dy" type4="Dy" periodicity1="2" phase1="1.230457122656" k1="0"/>
+  </PeriodicTorsionForce>
+  <NonbondedForce coulomb14scale="0.8333333333333334" lj14scale="0.5">
+    <UseAttributeFromResidue name="charge"/>
+    <Atom epsilon="4.184e-06" sigma="0.5523572052470104" class="ZN"/>
+    <Atom epsilon="0.0" sigma="1.0" class="D"/>
+  </NonbondedForce>
+</ForceField>

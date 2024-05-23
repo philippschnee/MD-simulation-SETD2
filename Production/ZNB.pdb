@@ -1,0 +1,32 @@
+CRYST1   82.771   82.771   82.771  90.00  90.00  90.00 P 1           1
+HETATM    1 ZN   ZNB C 246      52.236  26.440  30.706  1.00  0.00          Zn  
+HETATM    2  D1  ZNB C 246      52.023  27.295  30.521  1.00  0.00          Dy  
+HETATM    3  D2  ZNB C 246      53.132  26.357  30.748  1.00  0.00          Dy  
+HETATM    4  D3  ZNB C 246      51.916  25.903  30.059  1.00  0.00          Dy  
+HETATM    5  D4  ZNB C 246      51.876  26.206  31.497  1.00  0.00          Dy  
+HETATM    6 ZN   ZNB C 247      49.071  25.615  32.543  1.00  0.00          Zn  
+HETATM    7  D1  ZNB C 247      48.749  26.095  31.853  1.00  0.00          Dy  
+HETATM    8  D2  ZNB C 247      49.952  25.772  32.633  1.00  0.00          Dy  
+HETATM    9  D3  ZNB C 247      48.936  24.739  32.387  1.00  0.00          Dy  
+HETATM   10  D4  ZNB C 247      48.644  25.855  33.299  1.00  0.00          Dy  
+HETATM   11 ZN   ZNB C 248      41.866  62.439  39.948  1.00  0.00          Zn  
+HETATM   12  D1  ZNB C 248      41.941  63.332  40.036  1.00  0.00          Dy  
+HETATM   13  D2  ZNB C 248      42.203  62.187  39.152  1.00  0.00          Dy  
+HETATM   14  D3  ZNB C 248      40.999  62.204  39.993  1.00  0.00          Dy  
+HETATM   15  D4  ZNB C 248      42.323  62.034  40.609  1.00  0.00          Dy  
+CONECT    1    2    3    4    5
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1
+CONECT    6    7    8    9   10
+CONECT    7    6
+CONECT    8    6
+CONECT    9    6
+CONECT   10    6
+CONECT   11   12   13   14   15
+CONECT   12   11
+CONECT   13   11
+CONECT   14   11
+CONECT   15   11
+END

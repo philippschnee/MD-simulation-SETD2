@@ -39,6 +39,13 @@ conda install conda-forge::mdtraj
 conda install conda-forge::pdbfixer
 conda install -c conda-forge contact_map
 conda install anaconda::openpyxl
+conda install mdtraj cython
+```
+
+The clustering of the free peptide in solution simulations is done by enspara (https://enspara.readthedocs.io/en/latest/index.html). Install by running
+
+```
+pip install git+https://github.com/bowman-lab/enspara
 ```
 
 ## Citation :bookmark_tabs:
@@ -48,3 +55,5 @@ For the underlying MD data in the publication go to **doi.org/10.18419/darus-326
 Please cite **doi.org/10.18419/darus-2508** for the usage of this dataset.
 
 Please cite **doi.org/10.1038/s42004-022-00753-w** for the publication.
+
+Please cite **doi.org/10.1063/1.5063794** for the use of enspara.

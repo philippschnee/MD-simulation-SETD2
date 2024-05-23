@@ -13,11 +13,12 @@ import numpy as np
 
 
 peptide = 'ssK36'
-traj_folder = 'SETD2-{}-complex'.format(peptide)
+sim_time = '100ns'
+traj_folder = 'SETD2_{}_{}_complex'.format(peptide, sim_time)
 number_replicates = 1
 
 # Input Files
-pdb = PDBFile('SETD2-{}.pdb'.format(peptide))
+pdb = PDBFile('SETD2_{}_complex.pdb'.format(peptide))
 protein = app.Modeller(pdb.topology, pdb.positions)
 sim_forcefield = ('amber14-all.xml')
 sim_watermodel = ('amber14/tip4pew.xml')
@@ -283,13 +284,13 @@ while (count <= number_replicates):
  simulation = app.Simulation(solvated_protein.topology, system, integrator, platform, platformProperties)
  simulation.context.setState(state_free_EQ)
  simulation.reporters.append(app.StateDataReporter(stdout, 10000, step=True, potentialEnergy=True, temperature=True, progress=True, remainingTime=True, speed=True, totalSteps=Simulate_Steps, separator='\t'))
- simulation.reporters.append(HDF5Reporter(traj_folder + '/' + 'production_SETD2-{}_100ns{}.h5'.format(peptide, count), 10000, atomSubset=trajectory_out_indices))
+ simulation.reporters.append(HDF5Reporter(traj_folder + '/' + 'production_SETD2_{}_{}_complex_{}.h5'.format(peptide, sim_time, count), 10000, atomSubset=trajectory_out_indices))
  print('production run of replicate {}...'.format(count))
  simulation.step(Simulate_Steps)
  state_production = simulation.context.getState(getPositions=True, getVelocities=True)
  state_production = simulation.context.getState(getPositions=True, enforcePeriodicBox=True)
  final_pos = state_production.getPositions()
- app.PDBFile.writeFile(simulation.topology, final_pos, open(traj_folder + '/' + 'production_SETD2-{}_100ns{}.pdb'.format(peptide, count), 'w'), keepIds=True)
+ app.PDBFile.writeFile(simulation.topology, final_pos, open(traj_folder + '/' + 'production_SETD2_{}_{}_complex_{}.pdb'.format(peptide, sim_time, count), 'w'), keepIds=True)
  print('Successful production of replicate {}...'.format(count))
  del(simulation)
  count = count+1

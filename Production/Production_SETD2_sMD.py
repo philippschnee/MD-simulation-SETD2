@@ -22,11 +22,11 @@ if repulsive_force == 'no':
 else:
     peptide_shape = 'repulse'
 
-traj_folder = 'SETD2-{}-{}sMD'.format(peptide, peptide_shape)
+traj_folder = 'SETD2_{}_{}_{}_sMD'.format(peptide, peptide_shape, sim_time)
 
 # Input Files
 
-pdb = PDBFile('SETD2-{}-{}_sMD.pdb'.format(peptide, peptide_shape))
+pdb = PDBFile('SETD2_{}_{}_sMD.pdb'.format(peptide, peptide_shape))
 protein = app.Modeller(pdb.topology, pdb.positions)
 sim_forcefield = ('amber14-all.xml')
 sim_watermodel = ('amber14/tip4pew.xml')
@@ -385,13 +385,13 @@ while (count <= number_replicates):
  simulation = app.Simulation(solvated_protein.topology, system, integrator, platform, platformProperties)
  simulation.context.setState(state_steered)
  simulation.reporters.append(app.StateDataReporter(stdout, trajectory_out_interval, step=True, potentialEnergy=True, temperature=True, progress=True, remainingTime=True, speed=True, totalSteps=Simulate_Steps, separator='\t'))
- simulation.reporters.append(HDF5Reporter(traj_folder + '/' + 'production_steered_{}_50ns{}.h5'.format(peptide, count), trajectory_out_interval, atomSubset=trajectory_out_indices))
+ simulation.reporters.append(HDF5Reporter(traj_folder + '/' + 'production_SETD2_{}_{}_{}_sMD_{}.h5'.format(peptide, peptide_shape, sim_time, count), trajectory_out_interval, atomSubset=trajectory_out_indices))
  print('production run of replicate {}...'.format(count))
  simulation.step(Simulate_Steps)
  state_production = simulation.context.getState(getPositions=True, getVelocities=True)
  state_production = simulation.context.getState(getPositions=True, enforcePeriodicBox=True)
  final_pos = state_production.getPositions()
- app.PDBFile.writeFile(simulation.topology, final_pos, open(traj_folder + '/' + 'production_steered_{}_50ns{}.pdb'.format(peptide, count), 'w'), keepIds=True)
+ app.PDBFile.writeFile(simulation.topology, final_pos, open(traj_folder + '/' + 'production_SETD2_{}_{}_{}_sMD_{}.pdb'.format(peptide, peptide_shape, sim_time, count), 'w'), keepIds=True)
  print('Successful production of replicate {}...'.format(count))
  del(simulation)
  count = count+1

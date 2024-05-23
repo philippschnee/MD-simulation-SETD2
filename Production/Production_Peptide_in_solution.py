@@ -14,8 +14,9 @@ import numpy as np
 # Input parameters. Needed to find and name the files.
 
 peptide = 'H3K36'								# name of the peptide
-traj_folder = 'trajectories_{}'.format(peptide)	# name of the trajectory folder
-number_replicates = 1							# number of simulated replicates
+traj_folder = 'Free_peptide_{}'.format(peptide)	# name of the trajectory folder
+number_replicates = 1   						# number of simulated replicates
+sim_time = '70ns'
 
 # simulation 
 
@@ -38,10 +39,10 @@ while (count < number_replicates):
  
  # simulation Options
  
- Simulate_Steps = 350000               # 0,70 ns, simulation time of the main simualtion   
+ Simulate_Steps = 35000000               # 70 ns, simulation time of the main simualtion   
  
- npt_eq_Steps = 25000                  # 0,05 ns, simulation time of the NPT equilibration
- free_eq_Steps = 25000                 # 5 ns, simulation time of the unrestrained equilibration
+ npt_eq_Steps = 2500000                  # 5 ns, simulation time of the NPT equilibration
+ free_eq_Steps = 2500000                 # 5 ns, simulation time of the unrestrained equilibration
  
  # information for the hardware you are simulating on. These parameters are deigned for NVIDIA GPUs
  platform = Platform.getPlatformByName('CUDA')
@@ -167,12 +168,12 @@ while (count < number_replicates):
  simulation = app.Simulation(solvated_protein.topology, system, integrator, platform, platformProperties)
  simulation.context.setState(state_free_EQ)
  simulation.reporters.append(app.StateDataReporter(stdout, 10000, step=True, potentialEnergy=True, temperature=True, progress=True, remainingTime=True, speed=True, totalSteps=Simulate_Steps, separator='\t'))
- simulation.reporters.append(HDF5Reporter(traj_folder + '/' + 'production_{}_70ns{}.h5'.format(peptide, count), 10000, atomSubset=trajectory_out_indices))
+ simulation.reporters.append(HDF5Reporter(traj_folder + '/' + 'production_{}_{}_{}.h5'.format(peptide, sim_time, count), 10000, atomSubset=trajectory_out_indices))
  print('production run of replicate {}...'.format(count))
  simulation.step(Simulate_Steps)
  state_production = simulation.context.getState(getPositions=True, getVelocities=True)
  state_production = simulation.context.getState(getPositions=True, enforcePeriodicBox=True)
  final_pos = state_production.getPositions()
- app.PDBFile.writeFile(simulation.topology, final_pos, open(traj_folder + '/' + 'production_{}_70ns{}.pdb'.format(peptide, count), 'w'), keepIds=True)
+ app.PDBFile.writeFile(simulation.topology, final_pos, open(traj_folder + '/' + 'production_{}_{}_{}.pdb'.format(peptide, sim_time, count), 'w'), keepIds=True)
  print('Successful production of replicate {}...'.format(count))
  del(simulation)

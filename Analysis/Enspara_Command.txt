@@ -1,0 +1,14 @@
+Peptides H3K36 and ssK36 clustering:
+
+python cluster.py \
+  --trajectories /<path to trajectory>/production_H3K36_70ns*.h5 \
+  --topology /<path to topology>/H3K36.pdb \
+  --trajectories /<path to trajectory>/production_ssK36_70ns*.h5 \
+  --topology /<path to topology>/ssK36-processed.pdb \
+  --atoms '(name N or name C or name CA)' \
+  --algorithm khybrid \
+  --cluster-number 3 \
+  --distances /<path to working space>/fs-khybrid-clusters0020-distances.h5 \
+  --center-features /<path to working space>/fs-khybrid-clusters0020-centers.pickle \
+  --assignments /<path to working space>/fs-khybrid-clusters0020-assignments.h5
+

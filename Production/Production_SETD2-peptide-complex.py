@@ -36,10 +36,10 @@ sim_ph = 7.0
 
 # Simulation Options
 
-Simulate_Steps = 50000              # 0,1ns
-npt_eq_Steps = 50000                 # 0,1ns
-SAM_restr_eq_Steps = 50000           # 10ns
-SAM_free_eq_Steps = 50000            # 10ns
+Simulate_Steps = 50000000              # 100 ns
+npt_eq_Steps = 2500000                 # 5 ns
+SAM_restr_eq_Steps = 2500000           # 5 ns
+SAM_free_eq_Steps = 2500000            # 5 ns
 
 restrained_eq_atoms = 'protein and name CA and not chainid 1'                #MDTraj selection syntax; restrained backbone npt/nvt_equilibration_steps
 force_eq_atoms = 100                                                         #kilojoules_per_mole/unit.angstroms

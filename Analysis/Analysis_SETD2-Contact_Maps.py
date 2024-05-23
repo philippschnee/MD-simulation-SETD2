@@ -32,7 +32,7 @@ replicates = '1'        #put in same as number_replicates
 # load trajectory and topology
 traj_dict = {}
 for i in range(number_replicates):
-    folder = '/path_to_trajectory/production_SETD2_H3K36_100ns_{}.h5'.format(i+1)
+    folder = '/path_to_trajectory/production_{}_{}_{}_{}.h5'.format(Protein, Peptide, sim_time, i+1)
     print(folder)
     traj_dict[i+1]=mdt.load(folder)
 

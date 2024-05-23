@@ -21,7 +21,7 @@ count = 1
 
 #load trajectory and topology
 while (count <= number_replicates):
- traj = mdt.load('/home/philipp/test_SETD2/SETD2_ssK36_100ns_complex/production_SETD2_{}_{}_complex_{}.h5'.format(peptide, sim_time, count))
+ traj = mdt.load('/path-to-trajectory/production_SETD2_{}_{}_complex_{}.h5'.format(peptide, sim_time, count))
  topology=traj.topology
 
 # calcualte SN2 Transition States

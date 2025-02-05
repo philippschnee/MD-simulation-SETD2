@@ -33,7 +33,7 @@ while (count < number_replicates):
  
  # integration Options
  dt = 0.002*picoseconds
- temperature = 353.15*kelvin # 5°C
+ temperature = 300*kelvin # 27°C
  friction = 1/picosecond
  sim_ph = 7.0
  
